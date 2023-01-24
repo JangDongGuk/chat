@@ -5,7 +5,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/linux,node,dotenv,visualstudiocode,test,zsh
 # Edit at https://www.toptal.com/developers/gitignore?templates=linux,node,dotenv,visualstudiocode,test,zsh
 
-
+### dotenv ###
+.env
 
 ### Linux ###
 *~
