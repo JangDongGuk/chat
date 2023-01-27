@@ -6,10 +6,10 @@ import { ApiTags } from '@nestjs/swagger';
 export class WorkspacesController {
     @Get()
     getMyWorkspaces() {}
-  
+    // 나의 wokrsapces 를 가져온다
     @Post()
     createWorkspace() {}
-  
+    // worksapces채널을 만든다
     @Get(':url/members')
     getAllMembersFromWorkspace() {}
   
