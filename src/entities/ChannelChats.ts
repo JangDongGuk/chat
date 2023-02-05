@@ -1,3 +1,4 @@
+import { IsNotEmpty, IsString } from "class-validator";
 import { Column, CreateDateColumn, Entity, Index, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from "typeorm";
 import { Channels } from "./Channels";
 import { Users } from "./Users";
@@ -15,6 +16,8 @@ export class ChannelChats {
     @Column('int', { name: 'ChannelId', nullable: true })
     ChannelId: number | null;
 
+    @IsString()
+    @IsNotEmpty()
     @Column('text', { name: 'content' })
     content: string;
 

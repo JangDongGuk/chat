@@ -7,12 +7,12 @@ import { UsersModule } from './users/users.module';
 import { ChannelsModule } from './channels/channels.module';
 import { WorkspacesModule } from './workspaces/workspaces.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Users } from './common/entities/Users';
-import { Channels } from './common/entities/Channels';
-import { ChannelMembers } from './common/entities/ChannelMembers';
-import { ChannelChats } from './common/entities/Channelchats';
-import { Workspaces } from './common/entities/Workspaces';
-import { WorkspaceMembers } from './common/entities/WorkspaceMembers';
+import { Users } from './entities/Users';
+import { Channels } from './entities/Channels';
+import { ChannelMembers } from './entities/ChannelMembers';
+import { ChannelChats } from './entities/ChannelChats';
+import { Workspaces } from './entities/Workspaces';
+import { WorkspaceMembers } from './entities/WorkspaceMembers';
 
 
 @Module({
@@ -38,7 +38,7 @@ import { WorkspaceMembers } from './common/entities/WorkspaceMembers';
         Workspaces,
         WorkspaceMembers
       ],
-      synchronize: true,
+      synchronize: false,
       logging: true,
       charset: 'utf8mb4'
   }),

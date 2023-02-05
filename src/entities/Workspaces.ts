@@ -1,3 +1,4 @@
+import { IsNotEmpty, IsString } from "class-validator";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, Index, JoinColumn, 
     ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Channels } from "./Channels";
@@ -15,9 +16,13 @@ export class Workspaces {
     @Column('int', { name: 'OwnerId', nullable: true })
     OwnerId: number | null;
 
+    @IsString()
+    @IsNotEmpty()
     @Column('varchar', { name: 'name', unique: true, length: 30 })
     name: string;
     
+    @IsString()
+    @IsNotEmpty()
     @Column('varchar', { name: 'url', length: 30 })
     url: string;
 

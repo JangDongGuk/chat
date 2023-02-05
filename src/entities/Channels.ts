@@ -1,5 +1,6 @@
+import { IsNotEmpty, IsString } from "class-validator";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, Index, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { ChannelChats } from "./Channelchats";
+import { ChannelChats } from "./ChannelChats";
 import { ChannelMembers } from "./ChannelMembers";
 import { Users } from "./Users";
 import { Workspaces } from "./Workspaces";
@@ -13,6 +14,8 @@ export class Channels {
     @Column('int', { name: 'WorkspaceId', nullable: true })
     WorkspaceId: number | null;
 
+    @IsString()
+    @IsNotEmpty()
     @Column('varchar', { name: 'name', length: 30 })
     name: string;
 
