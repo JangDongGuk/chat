@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Req, Res, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, Req, Res, UseGuards, UseInterceptors } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { User } from 'src/common/decorators/user.decorator';
 import { undefinedToNullInterceptor } from 'src/common/interceptors/undefinedToNull.interceptor';
@@ -44,6 +44,7 @@ export class UsersController {
 
     })
     @ApiOperation({ summary: '로그인'})
+    // @UseGuards(LocalAuthGuard)
     @Post('login')
     login(@User() user) {
         return user;
