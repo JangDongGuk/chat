@@ -13,13 +13,14 @@ import { ChannelMembers } from './entities/ChannelMembers';
 import { ChannelChats } from './entities/ChannelChats';
 import { Workspaces } from './entities/Workspaces';
 import { WorkspaceMembers } from './entities/WorkspaceMembers';
-
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
     isGlobal: true,
   }),
+    AuthModule,
     UsersModule,
     ChannelsModule,
     WorkspacesModule,
