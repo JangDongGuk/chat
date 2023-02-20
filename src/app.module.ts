@@ -13,13 +13,15 @@ import { ChannelMembers } from './entities/ChannelMembers';
 import { ChannelChats } from './entities/ChannelChats';
 import { Workspaces } from './entities/Workspaces';
 import { WorkspaceMembers } from './entities/WorkspaceMembers';
-
+import { AuthModule } from './auth/auth.module';
+import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-    isGlobal: true,
-  }),
+    TypeOrmModule.forFeature([Users,Workspaces,Channels]),
+    EventsModule,
+    ConfigModule.forRoot({ isGlobal: true }),
+    AuthModule,
     UsersModule,
     ChannelsModule,
     WorkspacesModule,
@@ -36,13 +38,12 @@ import { WorkspaceMembers } from './entities/WorkspaceMembers';
         ChannelMembers,
         ChannelChats,
         Workspaces,
-        WorkspaceMembers
+        WorkspaceMembers,
       ],
       synchronize: false,
       logging: true,
       charset: 'utf8mb4'
   }),
-    TypeOrmModule.forFeature([Users])
 ],
   controllers: [AppController],
   providers: [AppService],
