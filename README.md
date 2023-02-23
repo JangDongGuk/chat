@@ -14,5 +14,12 @@
 - 유닛테스트(unit test)를 통해 service 로직 테스트
 - socket.io 를 이용하여 채팅 구현 및 image 업로드 구현
 
+## 구현 영상
+![회원가입및 로그인](https://user-images.githubusercontent.com/80239527/220887700-50313a85-9f9a-45e4-b2df-afff745de880.gif)
+![채팅및 이미지업로드](https://user-images.githubusercontent.com/80239527/220887713-20d80f4e-46c6-4d74-a71e-2214795da781.gif)
+![swagger](https://user-images.githubusercontent.com/80239527/220888937-0403e5b5-1efb-4be5-ad82-52ceaa079ef7.gif)
+
+
+
 ## 모델링 (ERD)
 ![스크린샷, 2023-02-22 18-42-46](https://user-images.githubusercontent.com/80239527/220582598-94ab4180-858b-44e4-b5e1-9c8fca4b141a.png)
