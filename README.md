@@ -13,6 +13,7 @@
 - class-validator 이용하여 유효성 검사구현
 - 유닛테스트(unit test)를 통해 service 로직 테스트
 - socket.io 를 이용하여 채팅 구현
+- 채팅에 image 업로드 구현
 
 ## 모델링 (ERD)
 ![스크린샷, 2023-02-22 18-42-46](https://user-images.githubusercontent.com/80239527/220582598-94ab4180-858b-44e4-b5e1-9c8fca4b141a.png)
