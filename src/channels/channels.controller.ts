@@ -1,11 +1,10 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post, Query, UploadedFiles, UseGuards, UseInterceptors } from '@nestjs/common';
-import { FileFieldsInterceptor } from '@nestjs/platform-express';
+import { FileFieldsInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { ApiCookieAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 import multer from 'multer';
 import path from 'path';
 import { User } from 'src/common/decorators/user.decorator';
 import { ChannelsService } from './channels.service';
-import { PostChatDto } from './dto/post-chat.dto';
 import fs from 'fs';
 import { Users } from 'src/entities/Users';
 import { CreateChannelDto } from './dto/create-channel.dto';
@@ -82,6 +81,7 @@ export class ChannelsController {
         user.id,
       );
     }
+ 
 
     @ApiOperation({ summary: '워크스페이스 특정 채널 이미지 업로드하기' })
     @UseInterceptors(
@@ -99,12 +99,14 @@ export class ChannelsController {
       }),
     )
     @Post(':url/channels/:name/images')
-    postImages(@UploadedFiles() files: Express.Multer.File[],
+    async createWorkspaceChannelImages(
       @Param('url') url: string,
       @Param('name') name: string,
-      @User() user,
+      @UploadedFiles() files: Express.Multer.File[],
+      @User() user: Users,
     ) {
-      return this.channelsService.createWorkspaceChannelImages(url, name, files, user.id);
+      return this.channelsService.createWorkspaceChannelImages(
+        url, name, files, user.id);
     }
 
     @ApiOperation({ summary: '안 읽은 개수 가져오기' })

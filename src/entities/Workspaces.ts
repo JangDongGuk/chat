@@ -15,6 +15,7 @@ import { Channels } from './Channels';
 import { WorkspaceMembers } from './WorkspaceMembers';
 import { Users } from './Users';
 
+
 @Index('name', ['name'], { unique: true })
 @Index('url', ['url'], { unique: true })
 @Index('OwnerId', ['OwnerId'], {})

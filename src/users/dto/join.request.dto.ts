@@ -4,7 +4,7 @@ import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 export class JoinRequestDto {
   @IsEmail()
   @ApiProperty({
-    example: 'zerohch0@gmail.com',
+    example: 'jang2@gmail.com',
     description: '이메일',
   })
   public email: string;
@@ -12,7 +12,7 @@ export class JoinRequestDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    example: '제로초',
+    example: 'jang2',
     description: '닉네임',
   })
   public nickname: string;
@@ -20,7 +20,7 @@ export class JoinRequestDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty({
-    example: 'nodejsbook',
+    example: 'sanemm11',
     description: '비밀번호',
   })
   public password: string;

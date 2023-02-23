@@ -56,7 +56,7 @@ async function bootstrap() {
   app.use(passport.session());
 
   const port = process.env.PORT || 3095;
-  await app.listen(3030);
+  await app.listen(3095);
   console.log(`서버가동중 포트번호 ${port}`);
 
   if (module.hot) {
