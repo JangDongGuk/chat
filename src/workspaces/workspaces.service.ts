@@ -65,7 +65,7 @@ export class WorkspacesService {
         .getMany();
     }
 
-    async createWorkspaceMembers(url, email) {
+    async createWorkspaceMembers(url: string, email: string) {
         const workspace = await this.workspacesRepository.findOne({
             where: { url },
             join: {

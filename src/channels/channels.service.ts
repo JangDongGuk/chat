@@ -8,7 +8,6 @@ import { Workspaces } from 'src/entities/Workspaces';
 import { MoreThan, Repository } from 'typeorm';
 import { EventsGateway } from 'src/events/events.gateway';
 
-
 @Injectable()
 export class ChannelsService {
   constructor(
@@ -142,6 +141,7 @@ export class ChannelsService {
         })
         .where('channel.name = :name', { name })
         .getOne();
+        
       const chats = new ChannelChats();
       chats.content = content;
       chats.UserId = myId;
@@ -152,7 +152,6 @@ export class ChannelsService {
         relations: ['User', 'Channel'],
       });
       this.eventsGateway.server
-        .of(`/ws-${url}`)
         .to(`/ws-${url}-${chatWithUser.ChannelId}`)
         .emit('message', chatWithUser);
     }
@@ -175,7 +174,6 @@ export class ChannelsService {
       if (!channel) {
         throw new NotFoundException('채널이 존재하지 않습니다.')
       }
-      //트랜잭션 적용
       for (let i = 0; i < files.length; i++) {
         const chats = new ChannelChats();
         chats.content = files[i].path;
@@ -187,7 +185,6 @@ export class ChannelsService {
           relations: ['User', 'Channel'],
         });
         this.eventsGateway.server
-          // .of(`/ws-${url}`)
           .to(`/ws-${url}-${chatWithUser.ChannelId}`)
           .emit('message', chatWithUser);
       }

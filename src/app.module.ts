@@ -14,12 +14,10 @@ import { ChannelChats } from './entities/ChannelChats';
 import { Workspaces } from './entities/Workspaces';
 import { WorkspaceMembers } from './entities/WorkspaceMembers';
 import { AuthModule } from './auth/auth.module';
-import { EventsModule } from './events/events.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([Users,Workspaces,Channels]),
-    EventsModule,
     ConfigModule.forRoot({ isGlobal: true }),
     AuthModule,
     UsersModule,
@@ -46,7 +44,7 @@ import { EventsModule } from './events/events.module';
   }),
 ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,],
 })
 export class AppModule implements NestModule{
   configure(consumer: MiddlewareConsumer): any {

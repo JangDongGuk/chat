@@ -1,11 +1,14 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
-import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, UseGuards } from '@nestjs/common';
+import { ApiCookieAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { LoggedInGuard } from 'src/auth/logged-in.guard';
 import { User } from 'src/common/decorators/user.decorator';
 import { Users } from 'src/entities/Users';
 import { CreateWorkspaceDto } from './dto/create-workspace.dto';
 import { WorkspacesService } from './workspaces.service';
 
 @ApiTags('workspaces')
+@ApiCookieAuth('connect.sid')
+@UseGuards(LoggedInGuard)
 @Controller('api/workspaces')
 export class WorkspacesController {
   constructor(

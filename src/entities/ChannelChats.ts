@@ -11,12 +11,6 @@ export class ChannelChats {
     @PrimaryColumn({ type: 'int', name: 'id' })
     id: number;
 
-    @Column('int', { name: 'UserId', nullable: true })
-    UserId: number | null;
-
-    @Column('int', { name: 'ChannelId', nullable: true })
-    ChannelId: number | null;
-
     @IsString()
     @IsNotEmpty()
     @ApiProperty({
@@ -32,19 +26,23 @@ export class ChannelChats {
     @CreateDateColumn()
     createdAt: Date;
 
-    @ManyToOne(() => Channels, (channels) => channels.ChannelChats, {
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
-      })
+    @Column('int', { name: 'UserId', nullable: true })
+    UserId: number | null;
+
+    @Column('int', { name: 'ChannelId', nullable: true })
+    ChannelId: number | null;
 
     @ManyToOne(() => Users, (users) => users.ChannelChats, {
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
-      })
-    
-    @JoinColumn([{ name: 'ChannelId', referencedColumnName: 'id' }])
-    Channel: Channels;
-
+      onDelete: 'SET NULL',
+      onUpdate: 'CASCADE',
+    })
     @JoinColumn([{ name: 'UserId', referencedColumnName: 'id' }])
     User: Users;
+
+    @ManyToOne(() => Channels, (channels) => channels.ChannelChats, {
+      onDelete: 'SET NULL',
+      onUpdate: 'CASCADE',
+    })
+    @JoinColumn([{ name: 'ChannelId', referencedColumnName: 'id' }])
+    Channel: Channels;
 }

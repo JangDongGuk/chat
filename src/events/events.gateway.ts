@@ -5,7 +5,8 @@ import { Server, Socket } from 'socket.io';
 import { onlineMap } from './onlineMap';
 
 
-@WebSocketGateway({namespace: /\ws-.+/})
+@WebSocketGateway({ namespace: /\/ws-.+/ })
+
 export class EventsGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer() public server : Server;
 
@@ -29,7 +30,7 @@ export class EventsGateway implements OnGatewayInit, OnGatewayConnection, OnGate
     });
   }
 
-  afterInit(server: Server) {
+  afterInit(server: Server): any {
     console.log('websocketserver init');
   }
 

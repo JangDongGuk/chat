@@ -7,7 +7,6 @@ import { WorkspaceMembers } from './src/entities/WorkspaceMembers';
 import { Workspaces } from './src/entities/Workspaces';
 import { Channels } from './src/entities/Channels';
 
-
 dotenv.config();
 
 const dataSource = new DataSource({

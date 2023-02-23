@@ -21,13 +21,13 @@ try {
 @ApiTags('channels')
 @ApiCookieAuth('connect.sid')
 @UseGuards(LoggedInGuard)
-@Controller('api/workspaces/:url/channels')
+@Controller('api/workspaces')
 export class ChannelsController {
     constructor(private channelsService: ChannelsService) {}
 
     @ApiOperation({ summary: '워크스페이스 채널 모두 가져오기' })
     @Get(':url/channels')
-    async getAllChannels(@Param('url') url: string, @User() user) {
+    async getWorkspaceChannels(@Param('url') url: string, @User() user: Users) {
         return this.channelsService.getWorkspaceChannels(url, user.id);
     }
 
